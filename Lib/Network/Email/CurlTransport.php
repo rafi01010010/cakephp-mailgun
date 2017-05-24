@@ -42,7 +42,7 @@ class CurlTransport extends AbstractTransport {
 		if ($attachments = $email->attachments()) {
 			$i = 1;
 			foreach ($attachments as $attachment) {
-				$post['attachment[' . $i . ']'] = "@" . $attachment["file"];
+				$post['attachment[' . $i . ']'] = curl_file_create($attachment["file"]);
 				$i++;
 			}
 		}
